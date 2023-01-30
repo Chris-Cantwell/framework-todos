@@ -3,15 +3,19 @@
 	import Todos from "./components/Todos.svelte";
 </script>
 
+<Todos />
+
 <main>
+	<p>Built with guidance from 
+		<a href=https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Svelte_Todo_list_beginning>Mozilla's tutorial</a></p>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 </main>
-
-<Todos />
 
 <style>
 	main {
 		text-align: center;
+		font-style: italic;
+		color:gray;
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;

@@ -1,8 +1,10 @@
 <h1>Svelte to-do list</h1>
 
 <script>
+    // #Props
     export let todos = [];
 
+    // #Reactive
     $: totalTodos = todos.length;
     $: completedTodos = todos.filter((todo) => todo.completed).length;
 
@@ -18,6 +20,7 @@
     }
 
     let newTodoID
+    // #Reactive
     $: {
       if(totalTodos === 0){
         newTodoID = 1;
@@ -27,6 +30,7 @@
     }
 
     let filter = 'all'
+    //# controlFlow
     const filterTodos = (filter, todos) =>
       filter === 'active' ? todos.filter((t) => !t.completed) :
       filter === `completed` ? todos.filter((t) => t.completed) :
@@ -56,6 +60,7 @@
     <!-- Filter -->
     <!-- From the Mozilla docs: 'aria-pressed' formatting for accessibility -->
     <div class="filters btn-group stack-exception">
+      <!-- #Reactive -->
       <button 
         class="btn toggle-btn" 
         class:btn__primary={filter === `all`}
@@ -76,6 +81,7 @@
         <span>Active</span>
         <span class="visually-hidden">tasks</span>
       </button>
+      <!-- #Reactive -->
       <button 
         class="btn toggle-btn" 
         class:btn__primary={filter === `completed`}
@@ -93,10 +99,12 @@
   
     <!-- Todos -->
     <ul role="list" class="todo-list stack-large" aria-labelledby="list-heading">
+      <!-- #controlFlow -->
       {#each filterTodos(filter, todos) as todo (todo.id)}
       <li class="todo">
         <div class="stack-small">
           <div class="c-cb">
+            <!-- #reactive -->
             <input 
               type="checkbox" 
               id="todo-{todo.id}"
@@ -111,6 +119,7 @@
             <button type="button" class="btn">
               Edit <span class="visually-hidden">{todo.name}</span>
             </button>
+            <!-- #reactive -->
             <button type="button" class="btn btn__danger"
               on:click={() => removeTodo(todo)}
             >
@@ -119,6 +128,7 @@
           </div>
         </div>
       </li>
+      <!-- controlFlow -->
       {:else}
         Nothing to do here!
       {/each}

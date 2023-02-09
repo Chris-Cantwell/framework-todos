@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{% block content %}
+<p>
+    <h3>Remaining Tasks</h3>
+    <ul>
+        {% for todo in todos %}
+            {% if not todo.completed %}
+                <li>{{todo.name}}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <h3>Completed Tasks </h3>
+    <ul>
+        {% for todo in todos %}
+            {% if  todo.completed %}
+                <li>{{todo.name}}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</p>
+{% endblock %}

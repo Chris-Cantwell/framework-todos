@@ -1,20 +1,28 @@
 {% extends "index.html" %}
 
-{% block content %}
+{% block tasks %}
 <p>
     <h3>Remaining Tasks</h3>
     <ul>
         {% for todo in todos %}
-            {% if not todo.completed %}
-                <li>{{todo.name}}</li>
+            {% if todo.complete  == False %}
+                <li>
+                    ({{todo.id}}) {{todo.name}}
+                    <a href="/update/{{ todo.id }}">Update</a>
+                    <a href="/delete/{{ todo.id }}">delete</a>
+                </li>
             {% endif %}
         {% endfor %}
     </ul>
     <h3>Completed Tasks </h3>
     <ul>
         {% for todo in todos %}
-            {% if  todo.completed %}
-                <li>{{todo.name}}</li>
+            {% if  todo.complete == True %}
+            <li>
+                ({{todo.id}}) {{todo.name}}
+                <a href="/update/{{ todo.id }}">Update</a>
+                <a href="/delete/{{ todo.id }}">delete</a>
+            </li>
             {% endif %}
         {% endfor %}
     </ul>

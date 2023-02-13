@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>To-Do's</title>
         <meta name="author" content="Chris Cantwell">
     </head>
+    <style>
+
+    </style>
     <body>
         <h2> Things to Get Done: </h2>
-        {% block content %}
-        {% endblock %}
+        <h3> Add Task </h3>
+        <form action="/add" method="post">
+            <div>
+                <label>Task Name</label>
+                <input type="text" name="name" placeholder="Enter Todo...">
+                <br>
+                <button type="submit">Add</button>
+            </div>
+        </form>
+        <hr>
+         <!-- Import and format tasks from database -->
+         {% block tasks %}
+         {% endblock %}
     </body>
 </html>
 

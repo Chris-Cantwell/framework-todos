@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# [Concept: Persistent Storage]
 db = SQLAlchemy(app)
 
 ## Define Tasks 
@@ -26,7 +27,7 @@ todos = [Task(name="Flask Tutorial", status=False),
          Task(name="Completed Task", status=True)]
 '''
 
-### Routing 
+### Routing [Concept: #Routing]
 ## Pages and Views
 @app.route('/')
 def home():

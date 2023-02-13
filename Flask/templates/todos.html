@@ -3,40 +3,47 @@
 {% block tasks %}
 <div class="ui segment">
     <p>
-        <h3 class="ui gray label">Remaining Tasks</h3>
+        
         <ul>
             {% for todo in todos %}
                 {% if todo.complete  == False %}
-                    <li>
+                    <div class="ui list">
                         <p class="ui big header">
-                            ({{todo.id}}) {{todo.name}}
+                            <span class="ui gray label">Remaining Task </span>
+                            <!-- Removed ({{todo.id}}), style choice -->
+                            <span class="ui big header">
+                                {{todo.name}}
+                            </span>
                         </p>
+                    
                         <a href="/update/{{ todo.id }}" class="ui blue button">
                             Complete
                         </a>
                         <a href="/delete/{{ todo.id }}" class="ui red button">
                             Delete
                         </a>
-                    </li>
+                    </div>
+                <!-- It is more efficient to just do an if/else here, but this groups like tasks -->
                 {% endif %}
-            {% endfor %}
-        </ul>
-        <h3 class="ui green label">Completed Tasks </h3>
-        <ul>
+            {% endfor %}    
             {% for todo in todos %}
-                {% if  todo.complete == True %}
-                <li>
-                    <p class="ui big header">
-                        ({{todo.id}}) {{todo.name}}
-                    </p>
-                    <a href="/update/{{ todo.id }}" class="ui blue button">
-                        Re-Open
-                    </a>
-                    <a href="/delete/{{ todo.id }}" class="ui red button">
-                        Delete
-                    </a>
-                </li>
-
+                {% if todo.complete  == True %}
+                    <div class="ui list">
+                        <p class="ui big header">
+                            <span class="ui green label">Completed Task </span>
+                            <!-- Removed ({{todo.id}}), style choice -->
+                            <span class="ui big header">
+                                {{todo.name}}
+                            </span>
+                        </p>
+                        <a href="/update/{{ todo.id }}" class="ui blue button">
+                            Re-Open
+                        </a>
+                        <a href="/delete/{{ todo.id }}" class="ui red button">
+                            Delete
+                        </a>
+                
+                    </div>
                 {% endif %}
             {% endfor %}
         </ul>
